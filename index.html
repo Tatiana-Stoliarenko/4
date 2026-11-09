@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №4: JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Система управління університетом</h1>
+        
+        <!-- Меню табів -->
+        <div class="tabs">
+            <button class="tab-btn active" data-target="teachers">Викладачі</button>
+            <button class="tab-btn" data-target="students">Студенти</button>
+            <button class="tab-btn" data-target="disciplines">Дисципліни</button>
+        </div>
+
+        <!-- Кнопка додавання нового запису -->
+        <div class="actions">
+            <button id="open-modal-btn" class="btn btn-primary">+ Додати новий запис</button>
+            <button id="reset-storage-btn" class="btn btn-danger">Скинути до початкових даних</button>
+        </div>
+
+        <!-- Контейнери з таблицями -->
+        <div class="tab-content">
+            <!-- Таблиця 1: Викладачі -->
+            <div id="teachers" class="tab-pane active">
+                <h2>Список викладачів</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ПІБ</th>
+                            <th>Кафедра</th>
+                            <th>Посада</th>
+                            <th>Дисципліни</th>
+                            <th>Стаж (р.)</th>
+                            <th>Науковий ступінь</th>
+                            <th>Email</th>
+                            <th>Дії</th>
+                        </tr>
+                    </thead>
+                    <tbody id="teachers-tbody"></tbody>
+                </table>
+            </div>
+
+            <!-- Таблиця 2: Студенти -->
+            <div id="students" class="tab-pane">
+                <h2>Список студентів</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ПІБ</th>
+                            <th>Група</th>
+                            <th>Спеціальність</th>
+                            <th>Курс</th>
+                            <th>Середній бал</th>
+                            <th>Форма навчання</th>
+                            <th>Email</th>
+                            <th>Дії</th>
+                        </tr>
+                    </thead>
+                    <tbody id="students-tbody"></tbody>
+                </table>
+            </div>
+
+            <!-- Таблиця 3: Дисципліни -->
+            <div id="disciplines" class="tab-pane">
+                <h2>Список дисциплін</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Назва дисципліни</th>
+                            <th>Кредити ECTS</th>
+                            <th>Семестр</th>
+                            <th>Кафедра</th>
+                            <th>Лектор</th>
+                            <th>Годин</th>
+                            <th>Форма контролю</th>
+                            <th>Дії</th>
+                        </tr>
+                    </thead>
+                    <tbody id="disciplines-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальне вікно (Попап) для додавання нових даних -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-title">Додати новий запис</h3>
+                <button id="close-modal-btn" class="close-btn">&times;</button>
+            </div>
+            <form id="add-data-form">
+                <div id="form-fields-container" class="form-fields"></div>
+                <div class="modal-footer">
+                    <button type="button" id="cancel-btn" class="btn btn-secondary">Скасувати</button>
+                    <button type="submit" class="btn btn-primary">Зберегти</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Попап помилки видалення (для зв'язаних даних) -->
+    <div id="error-modal-overlay" class="modal-overlay">
+        <div class="modal modal-error">
+            <div class="modal-header">
+                <h3>Неможливо видалити запис!</h3>
+                <button id="close-error-btn" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="error-modal-message">Ці дані використовуються в іншій таблиці.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="error-ok-btn" class="btn btn-secondary">Зрозуміло</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
